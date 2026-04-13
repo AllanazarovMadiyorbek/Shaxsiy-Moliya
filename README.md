@@ -1,4 +1,4 @@
-# 🌟 Aurora Ledger
+# 🌟 Shaxsiy-Moliya
 
 <div align="center">
 
@@ -17,9 +17,9 @@ Track expenses • Manage budgets • Analyze finances • Multi-currency suppor
 
 ## 💡 About
 
-**Aurora Ledger** is a modern, feature-rich personal finance management application that helps you take complete control of your financial life. Built with cutting-edge web technologies, it offers an intuitive interface for tracking expenses, managing budgets, and analyzing your financial health.
+**Shaxsiy-Moliya** is a modern, feature-rich personal finance management application that helps you take complete control of your financial life. Built with cutting-edge web technologies, it offers an intuitive interface for tracking expenses, managing budgets, and analyzing your financial health.
 
-### ✨ Why Aurora Ledger?
+### ✨ Why Shaxsiy-Moliya?
 
 - 🎯 **Easy to Use** - Clean, intuitive interface designed for everyone
 - 🔒 **Privacy First** - Your financial data stays secure and private
