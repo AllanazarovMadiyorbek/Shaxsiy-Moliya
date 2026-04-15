@@ -71,6 +71,34 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Diagnostics: checks DB connectivity, required tables, and critical env vars.
+// Exposed intentionally (read-only) so production misconfigs can be diagnosed
+// without Render shell access.
+app.get('/health/diag', async (req, res) => {
+  const diag = {
+    env: {
+      DATABASE_URL: !!process.env.DATABASE_URL,
+      JWT_SECRET: !!process.env.JWT_SECRET,
+      JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || null,
+      NODE_ENV: process.env.NODE_ENV || null,
+    },
+    db: { connected: false, error: null, usersTable: null },
+  };
+  try {
+    const { default: pool } = await import('./config/database.js');
+    const r = await pool.query('SELECT 1 AS ok');
+    diag.db.connected = r.rows[0]?.ok === 1;
+    const t = await pool.query(
+      "SELECT to_regclass('public.users') AS users, to_regclass('public.categories') AS categories"
+    );
+    diag.db.usersTable = t.rows[0]?.users || null;
+    diag.db.categoriesTable = t.rows[0]?.categories || null;
+  } catch (err) {
+    diag.db.error = err.message;
+  }
+  res.json(diag);
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/auth', oauthRoutes);
