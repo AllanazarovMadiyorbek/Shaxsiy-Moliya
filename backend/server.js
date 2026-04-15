@@ -40,8 +40,10 @@ app.use(cors({
       'http://localhost:5173',
       'http://localhost:3000'
     ];
-    
-    if (allowedOrigins.includes(origin)) {
+
+    const vercelPreview = /^https:\/\/shaxsiy-moliya[a-z0-9-]*\.vercel\.app$/;
+
+    if (allowedOrigins.includes(origin) || vercelPreview.test(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
