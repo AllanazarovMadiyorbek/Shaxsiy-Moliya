@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
+import { BACKEND_URL } from '../lib/api';
 import { UserPlus } from 'lucide-react';
 
 const Register = () => {
@@ -40,8 +41,7 @@ const Register = () => {
   };
 
   const handleGoogleLogin = () => {
-    const backendUrl = import.meta.env.VITE_API_URL.replace('/api', '');
-    window.location.href = `${backendUrl}/api/auth/google`;
+    window.location.href = `${BACKEND_URL}/api/auth/google`;
   };
 
   return (

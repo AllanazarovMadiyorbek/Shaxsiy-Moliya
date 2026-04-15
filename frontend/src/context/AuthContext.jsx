@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { validateAndCleanupToken, getTokenExpirationMessage } from '../utils/tokenManager';
+import { API_URL } from '../lib/api';
 
 const AuthContext = createContext();
 
@@ -50,7 +51,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, {
+      const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
@@ -73,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password, full_name) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
+      const response = await axios.post(`${API_URL}/auth/register`, {
         email,
         password,
         full_name,

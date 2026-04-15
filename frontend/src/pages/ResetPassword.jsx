@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Lock } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { API_URL } from '../lib/api';
 
 const ResetPassword = () => {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ const ResetPassword = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/auth/reset-password`, {
+      await axios.post(`${API_URL}/auth/reset-password`, {
         token,
         newPassword: formData.password,
       });

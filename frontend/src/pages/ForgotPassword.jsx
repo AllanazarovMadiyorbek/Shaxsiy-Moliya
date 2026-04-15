@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Mail, ArrowLeft } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { API_URL } from '../lib/api';
 
 const ForgotPassword = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/auth/forgot-password`, {
+      await axios.post(`${API_URL}/auth/forgot-password`, {
         email,
       });
       

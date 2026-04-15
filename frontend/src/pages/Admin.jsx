@@ -11,7 +11,6 @@ import {
 const Admin = () => {
   const { user } = useAuth();
   const { t } = useTranslation();
-  const API_URL = import.meta.env.VITE_API_URL;
 
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);

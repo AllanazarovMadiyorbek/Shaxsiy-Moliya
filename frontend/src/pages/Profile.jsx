@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { API_URL } from '../lib/api';
 import toast from 'react-hot-toast';
 import { User, Mail, Lock, Save, Eye, EyeOff, Shield } from 'lucide-react';
 
 const Profile = () => {
   const { user, setUser } = useAuth();
   const { t } = useTranslation();
-  const API_URL = import.meta.env.VITE_API_URL;
 
   // Profile form state
   const [profileForm, setProfileForm] = useState({

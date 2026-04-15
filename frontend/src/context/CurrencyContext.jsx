@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../lib/api';
 
 const CurrencyContext = createContext();
 
@@ -7,8 +8,6 @@ export function CurrencyProvider({ children }) {
   const [currency, setCurrency] = useState('USD');
   const [exchangeRates, setExchangeRates] = useState({});
   const [loading, setLoading] = useState(true);
-
-  const API_URL = import.meta.env.VITE_API_URL;
 
   // Load user's preferred currency
   useEffect(() => {
