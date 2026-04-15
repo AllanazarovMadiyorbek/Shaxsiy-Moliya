@@ -34,19 +34,23 @@ app.use(cors({
   origin: function(origin, callback) {
     // Allow requests with no origin (mobile apps, Postman, etc.)
     if (!origin) return callback(null, true);
-    
+
     const allowedOrigins = [
       'https://aurora-ledger.vercel.app',
+      'https://shaxsiy-moliya.vercel.app',
       'http://localhost:5173',
       'http://localhost:3000'
     ];
 
-    const vercelPreview = /^https:\/\/shaxsiy-moliya[a-z0-9-]*\.vercel\.app$/;
+    // Match any Vercel preview/prod URL for this project, including
+    // team-scoped previews like shaxsiy-moliya-<hash>-<team>-projects.vercel.app
+    const vercelPreview = /^https:\/\/shaxsiy-moliya[a-z0-9-]*\.vercel\.app$/i;
 
     if (allowedOrigins.includes(origin) || vercelPreview.test(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.warn(`[CORS] Blocked origin: ${origin}`);
+      callback(null, false);
     }
   },
   credentials: true,
