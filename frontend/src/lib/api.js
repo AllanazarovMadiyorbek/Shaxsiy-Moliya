@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { validateAndCleanupToken, isTokenExpired } from '../utils/tokenManager';
 
-const RAW_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const RAW_API_URL = import.meta.env.VITE_API_URL || 'https://shaxsiy-moliya-backend.onrender.com/api';
 // Tolerate VITE_API_URL being set with or without the /api suffix / trailing slash.
 const normalized = RAW_API_URL.replace(/\/+$/, '');
 export const API_URL = /\/api$/.test(normalized) ? normalized : `${normalized}/api`;
