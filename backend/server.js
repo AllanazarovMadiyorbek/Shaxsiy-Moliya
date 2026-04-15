@@ -37,7 +37,7 @@ app.use(cors({
 
     const allowedOrigins = [
       'https://aurora-ledger.vercel.app',
-      'https://shaxsiy-moliya.vercel.app',
+      'https://shaxsiy-moliya-rouge.vercel.app',
       'http://localhost:5173',
       'http://localhost:3000'
     ];
